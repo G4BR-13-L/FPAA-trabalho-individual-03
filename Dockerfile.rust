@@ -1,0 +1,15 @@
+# Dockerfile.rust
+FROM rust:1.85-alpine3.20
+
+WORKDIR /app
+
+# Copiar os arquivos de manifesto primeiro para aproveitar o cache de construção
+COPY selecao_simultanea_rust/Cargo.toml .
+COPY selecao_simultanea_rust/Cargo.lock .
+
+# Criar diretório src e copiar os arquivos fonte
+RUN mkdir src
+COPY selecao_simultanea_rust/src/ ./src/
+
+# Compilar e executar os testes
+CMD ["cargo", "test", "--", "--nocapture"]

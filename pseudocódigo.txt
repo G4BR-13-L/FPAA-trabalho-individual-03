@@ -1,0 +1,54 @@
+ALGORITMO MaxMinSelect(array)
+    ENTRADA: Um array de números (array)
+    SAÍDA: O valor máximo e o valor mínimo no array
+    
+    n = tamanho(array)
+    SE n == 0 ENTÃO
+        RETORNE "Array vazio"
+    FIM SE
+
+    
+    SE n == 1 ENTÃO
+        max = array[0]
+        min = array[0]
+        RETORNE (max, min)
+    FIM SE
+
+    SE array[0] > array[1] ENTÃO
+        max = array[0]
+        min = array[1]
+    SENÃO
+        max = array[1]
+        min = array[0]
+    FIM SE
+
+    PARA i = 2 ATÉ n-1 PASSO 2 FAÇA
+        // Verifica se há um número ímpar de elementos no final
+        SE i == n-1 ENTÃO
+            SE array[i] > max ENTÃO
+                max = array[i]
+            SENÃO SE array[i] < min ENTÃO
+                min = array[i]
+            FIM SE
+        SENÃO
+            // Compara os elementos em pares
+            SE array[i] > array[i+1] ENTÃO
+                SE array[i] > max ENTÃO
+                    max = array[i]
+                FIM SE
+                SE array[i+1] < min ENTÃO
+                    min = array[i+1]
+                FIM SE
+            SENÃO
+                SE array[i+1] > max ENTÃO
+                    max = array[i+1]
+                FIM SE
+                SE array[i] < min ENTÃO
+                    min = array[i]
+                FIM SE
+            FIM SE
+        FIM SE
+    FIM PARA
+
+    RETORNE (max, min)
+FIM ALGORITMO
