@@ -39,7 +39,7 @@ sudo docker compose up --build -d
 
 ### 1. Acessar o Diretório do Projeto  
 ```sh
-cd selecao_simultanea_python
+cd caminho_hamiltoniano_python
 ```
 
 ### 2. Criar e Ativar um Ambiente Virtual Python

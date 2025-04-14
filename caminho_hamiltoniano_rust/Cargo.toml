@@ -1,5 +1,5 @@
 [package]
-name = "selecao_simultanea_rust"
+name = "caminho_hamiltoniano_rust"
 version = "0.1.0"
 edition = "2021"
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-RUST_DIR=selecao_simultanea_rust
-PYTHON_DIR=selecao_simultanea_python
+RUST_DIR=caminho_hamiltoniano_rust
+PYTHON_DIR=caminho_hamiltoniano_python
 
 # Função para tratar erros
 handle_error() {
