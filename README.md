@@ -67,14 +67,56 @@ O programa executará a função `main()`
 
 ## Relatório Técnico
 
-### Análise da Complexidade Assintótica
 
-O algoritmo é baseado em backtracking e possui complexidade:
+---
 
-- **Pior caso**: O(n!) pois tenta permutações de vértices para encontrar um caminho válido
-- **Melhor caso**: O(n^2) quando um caminho é encontrado rapidamente
+### Aplicação do Teorema Mestre
 
-A função pode ser otimizada com memoização ou poda de caminhos impossíveis em grafos grandes.
+**Não é possivel aplicar o Teorema Mestre.**  
+O **Teorema Mestre** é aplicável a **recorrências** do tipo:
+
+\[
+T(n) = a \cdot T\left(\frac{n}{b}\right) + f(n)
+\]
+
+Ou seja, ele serve para resolver **algoritmos recursivos com divisão do problema em subproblemas de tamanho menor** (ex: mergesort, quicksort, etc.).
+
+O algoritmo de **Hamiltonian Path por backtracking**:
+- **Não divide o problema em subproblemas menores**
+- Ele **gera todas as permutações possíveis** de vértices para tentar encontrar um caminho válido
+- A recorrência, se fosse formalizada, se assemelharia mais a:
+  
+  \[
+  T(n) = (n - 1) \cdot T(n - 1) + O(1)
+  \]
+
+Essa recorrência **não se encaixa na forma canônica** do Teorema Mestre.
+
+### Conclusão:
+
+> O **Teorema Mestre não é aplicável** ao algoritmo Hamiltonian Path por backtracking porque:
+> - O problema **não é dividido** em subproblemas de tamanho reduzido
+> - A recorrência resultante **não possui a forma adequada** exigida pelo teorema
+
+---
+
+### Análise dos Casos de Complexidade
+
+#### Diferença entre os casos de complexidade
+
+| Caso         | Descrição                                                                 |
+|--------------|--------------------------------------------------------------------------|
+| **Pior caso** | O algoritmo percorre **todas as permutações possíveis** e **não encontra** um caminho válido. Complexidade: **O(n!)** |
+| **Caso médio** | O algoritmo encontra um caminho **em algum ponto intermediário** depois de explorar parte das possibilidades. Complexidade média estimada: **entre O(n) e O(n!)**, mas geralmente próximo de **O(n!)** |
+| **Melhor caso** | O algoritmo encontra um caminho Hamiltoniano **na primeira tentativa**. Complexidade: **O(n)** |
+
+#### Impacto no desempenho do algoritmo
+
+- O algoritmo é extremamente **sensível ao número de vértices (n)**. Pequenos aumentos em `n` causam crescimento exponencial no tempo de execução.
+- **No pior caso**, é **inviável para grafos com mais de ~15 vértices**, pois há até `n!` caminhos a serem testados.
+- **No melhor caso**, pode ser muito eficiente — mas isso é raro e depende da sorte do vértice inicial e da estrutura do grafo.
+- O **caso médio** geralmente tende a ser próximo do pior caso, pois **a maioria das tentativas falha** antes de encontrar um caminho válido.
+
 
 ## Exemplo de Uso
 
